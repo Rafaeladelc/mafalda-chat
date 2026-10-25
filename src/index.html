@@ -3,17 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat con Mafalda</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Mafalda · Chat</title>
+  <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
   <div class="app">
     <header class="app-header">
       <h1 class="brand">Mafalda</h1>
-      <p class="tagline">Chatea con ella, si te animas.</p>
+      <nav class="nav" aria-label="Principal">
+        <a href="/home" data-link>Home</a>
+        <a href="/chat" data-link>Chat</a>
+        <a href="/about" data-link>About</a>
+      </nav>
     </header>
 
-    <main class="chat">
+    <!-- Aquí se dibuja la vista activa -->
+    <main class="view" id="view"></main>
+
+    <footer class="app-footer">
+      <small>Proyecto Integrador · Módulo 3</small>
+    </footer>
+  </div>
+
+  <!-- Plantillas de las vistas (no se ven hasta que el router las usa) -->
+  <template id="tpl-home">
+    <section class="page">
+      <h2>Hola, soy Mafalda</h2>
+      <p>Una niña curiosa y preguntona, creada por el humorista gráfico argentino Quino. Le preocupa el mundo, le encantan los Beatles y odia la sopa.</p>
+      <p>Pregúntale lo que quieras. Pero ojo: ella también te va a preguntar.</p>
+      <a class="button" href="/chat" data-link>Empezar a chatear</a>
+    </section>
+  </template>
+
+  <template id="tpl-chat">
+    <section class="chat">
       <!-- Mensajes de ejemplo: más adelante los dibujará JavaScript -->
       <ul class="messages" id="messages" aria-live="polite">
         <li class="message character">¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.</li>
@@ -32,11 +55,18 @@
         >
         <button type="submit">Enviar</button>
       </form>
-    </main>
+    </section>
+  </template>
 
-    <footer class="app-footer">
-      <small>Proyecto Integrador · Módulo 3</small>
-    </footer>
-  </div>
+  <template id="tpl-about">
+    <section class="page">
+      <h2>Acerca de este proyecto</h2>
+      <p>Aplicación web (SPA) para chatear con Mafalda usando inteligencia artificial. Es el Proyecto Integrador del Módulo 3 del bootcamp Full Stack Developer de SoyHenry.</p>
+      <p>Está hecha con HTML, CSS y JavaScript, con una función de servidor en Vercel que protege la API key de Gemini.</p>
+      <p>Mafalda es un personaje creado por Quino. Este proyecto es un ejercicio de aprendizaje.</p>
+    </section>
+  </template>
+
+  <script type="module" src="/src/app.js"></script>
 </body>
 </html>

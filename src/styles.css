@@ -205,3 +205,81 @@ body {
     max-width: 60%;
   }
 }
+/* =====================================================
+   PARTE 3: navegación y vistas
+   ===================================================== */
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav a {
+  padding: 0.35rem 0.7rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav a[aria-current] {
+  background: #fff;
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.nav a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Contenedor de la vista activa */
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Páginas de texto (Home y About) */
+.page {
+  padding: 1.5rem 1rem;
+}
+
+.page h2 {
+  margin-bottom: 0.75rem;
+  color: var(--brand);
+}
+
+.page p {
+  margin-bottom: 0.75rem;
+  max-width: 60ch;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  background: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.6rem;
+}
+
+.button:hover {
+  background: var(--brand-dark);
+}
