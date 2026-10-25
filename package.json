@@ -1,0 +1,6 @@
+{
+  "name": "mafalda-chat",
+  "version": "1.0.0",
+  "description": "Chat con Mafalda usando Gemini",
+  "type": "module"
+}
