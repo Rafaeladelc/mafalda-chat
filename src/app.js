@@ -42,4 +42,11 @@ window.addEventListener('popstate', () => {
 });
 
 // Primera vista al abrir la página
-render(location.pathname);
+function start() {
+  if (!routes[location.pathname]) {
+    history.replaceState({}, '', '/home');
+  }
+  render(location.pathname);
+}
+
+start();
