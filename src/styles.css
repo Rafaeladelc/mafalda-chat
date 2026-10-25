@@ -1,0 +1,207 @@
+/* ---------- Variables ---------- */
+:root {
+  --bg: #fff8ef;
+  --panel: #ffffff;
+  --text: #2b2118;
+  --muted: #6b5d50;
+  --brand: #c8102e;
+  --brand-dark: #9d0c24;
+  --user-bubble: #c8102e;
+  --user-text: #ffffff;
+  --char-bubble: #f3e6d3;
+  --border: #e6d8c3;
+  --focus: #1d4ed8;
+}
+
+/* ---------- Base (mobile-first) ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* La app ocupa toda la pantalla: cabecera, chat que crece, pie */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.app-header {
+  padding: 0.75rem 1rem;
+  background: var(--brand);
+  color: #fff;
+}
+
+.brand {
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+/* ---------- Chat ---------- */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.message {
+  max-width: 85%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--user-bubble);
+  color: var(--user-text);
+  border-bottom-right-radius: 0.25rem;
+}
+
+.message.character {
+  align-self: flex-start;
+  background: var(--char-bubble);
+  color: var(--text);
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* ---------- Formulario ---------- */
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  border: 2px solid var(--border);
+  border-radius: 0.6rem;
+}
+
+.composer button {
+  padding: 0.65rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--brand);
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.composer button:hover {
+  background: var(--brand-dark);
+}
+
+.composer button:disabled {
+  background: #b9b0a5;
+  cursor: not-allowed;
+}
+
+/* Foco visible para quien navega con teclado */
+.composer input:focus-visible,
+.composer button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Pie ---------- */
+.app-footer {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* =====================================================
+   PARTE 2: adaptación a tablet y desktop (media queries)
+   ===================================================== */
+
+/* Altura fija: así la lista de mensajes tiene su propio scroll */
+.app {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+}
+
+/* Tablet: desde 768px */
+@media (min-width: 768px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .app {
+    max-width: 760px;
+    height: calc(100vh - 3rem);
+    height: calc(100dvh - 3rem);
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(43, 33, 24, 0.12);
+  }
+
+  .brand {
+    font-size: 1.6rem;
+  }
+
+  .messages {
+    padding: 1.5rem;
+  }
+
+  .message {
+    max-width: 70%;
+    font-size: 1.05rem;
+  }
+}
+
+/* Desktop: desde 1100px */
+@media (min-width: 1100px) {
+  .app {
+    max-width: 920px;
+  }
+
+  .message {
+    max-width: 60%;
+  }
+}

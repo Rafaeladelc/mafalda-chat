@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat con Mafalda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1 class="brand">Mafalda</h1>
+      <p class="tagline">Chatea con ella, si te animas.</p>
+    </header>
+
+    <main class="chat">
+      <!-- Mensajes de ejemplo: más adelante los dibujará JavaScript -->
+      <ul class="messages" id="messages" aria-live="polite">
+        <li class="message character">¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.</li>
+        <li class="message user">Hola Mafalda, ¿qué opinas de la sopa?</li>
+        <li class="message character">Que alguien la inventó para castigar a los niños. Y encima dicen que es sana.</li>
+      </ul>
+
+      <form class="composer" id="composer">
+        <label for="message-input" class="visually-hidden">Escribe tu mensaje</label>
+        <input
+          id="message-input"
+          type="text"
+          placeholder="Escribe tu mensaje..."
+          autocomplete="off"
+          maxlength="500"
+        >
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+
+    <footer class="app-footer">
+      <small>Proyecto Integrador · Módulo 3</small>
+    </footer>
+  </div>
+</body>
+</html>
