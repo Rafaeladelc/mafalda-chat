@@ -1,7 +1,9 @@
+import { mountChat } from './chat.js';
+
 // Rutas de la aplicación: ruta -> plantilla que se muestra
 const routes = {
   '/home': { template: 'tpl-home', title: 'Mafalda · Inicio' },
-  '/chat': { template: 'tpl-chat', title: 'Mafalda · Chat' },
+  '/chat': { template: 'tpl-chat', title: 'Mafalda · Chat', onMount: mountChat },
   '/about': { template: 'tpl-about', title: 'Mafalda · About' },
 };
 
@@ -14,6 +16,8 @@ function render(path) {
 
   view.replaceChildren(template.content.cloneNode(true));
   document.title = route.title;
+
+  route.onMount?.();
 
   // Marca el enlace de la vista activa
   document.querySelectorAll('.nav a').forEach((link) => {
