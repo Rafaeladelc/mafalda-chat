@@ -1,32 +1,11 @@
+import { requestReply, friendlyError } from './chat-api.js';
+
 // Estado del chat: vive FUERA de la vista, así no se pierde al navegar
 const messages = [
   { role: 'character', text: '¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.' },
 ];
 let isTyping = false;
 let lastError = null;
-
-// Pide la respuesta de Mafalda a nuestro servidor (api/chat.js)
-async function requestReply() {
-  const response = await fetch('/api/chat', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages }),
-  });
-
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(data.error ?? 'Mafalda no pudo responder.');
-  }
-  return data.reply;
-}
-
-// Convierte un error técnico en un mensaje entendible
-function friendlyError(error) {
-  if (error instanceof TypeError) {
-    return 'No pude conectarme con el servidor. Revisa tu conexión e inténtalo de nuevo.';
-  }
-  return `Algo salió mal: ${error.message}`;
-}
 
 function createMessageElement(message) {
   const li = document.createElement('li');
@@ -88,7 +67,7 @@ export function mountChat() {
 
     let failedText = '';
     try {
-      const reply = await requestReply();
+      const reply = await requestReply(messages);
       messages.push({ role: 'character', text: reply });
     } catch (error) {
       messages.pop(); // el mensaje no llegó: no lo dejamos en el historial
