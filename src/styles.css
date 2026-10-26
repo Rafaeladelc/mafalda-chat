@@ -283,3 +283,15 @@ body {
 .button:hover {
   background: var(--brand-dark);
 }
+
+/* Parte 4b: estado "escribiendo" y controles deshabilitados */
+.message.typing {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.composer input:disabled,
+.composer button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
