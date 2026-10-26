@@ -295,3 +295,11 @@ body {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* Parte 5b: mensaje de error */
+.message.error {
+  align-self: center;
+  background: #fdecea;
+  color: var(--brand-dark);
+  border: 1px solid #f3b6ae;
+}

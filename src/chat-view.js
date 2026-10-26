@@ -3,21 +3,29 @@ const messages = [
   { role: 'character', text: '¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.' },
 ];
 let isTyping = false;
+let lastError = null;
 
-// Respuestas de mentira, solo para probar la interfaz (luego las reemplaza Gemini)
-const mockReplies = [
-  'Eso lo tengo que pensar... mientras tanto, ¿tú sabías que la sopa es un castigo?',
-  '¿Y por qué siempre los grandes dicen "es por tu bien"?',
-  'Interesante. Pero yo pregunté primero.',
-];
-let mockIndex = 0;
-
-function getMockReply() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockReplies[mockIndex++ % mockReplies.length]);
-    }, 1200);
+// Pide la respuesta de Mafalda a nuestro servidor (api/chat.js)
+async function requestReply() {
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages }),
   });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data.error ?? 'Mafalda no pudo responder.');
+  }
+  return data.reply;
+}
+
+// Convierte un error técnico en un mensaje entendible
+function friendlyError(error) {
+  if (error instanceof TypeError) {
+    return 'No pude conectarme con el servidor. Revisa tu conexión e inténtalo de nuevo.';
+  }
+  return `Algo salió mal: ${error.message}`;
 }
 
 function createMessageElement(message) {
@@ -34,9 +42,18 @@ function createTypingElement() {
   return li;
 }
 
+function createErrorElement(text) {
+  const li = document.createElement('li');
+  li.className = 'message error';
+  li.setAttribute('role', 'alert');
+  li.textContent = text;
+  return li;
+}
+
 function renderMessages(listElement) {
   const items = messages.map(createMessageElement);
   if (isTyping) items.push(createTypingElement());
+  if (lastError) items.push(createErrorElement(lastError));
   listElement.replaceChildren(...items);
   listElement.scrollTop = listElement.scrollHeight;
 }
@@ -65,16 +82,26 @@ export function mountChat() {
 
     messages.push({ role: 'user', text });
     input.value = '';
+    lastError = null;
     isTyping = true;
     refresh();
 
+    let failedText = '';
     try {
-      const reply = await getMockReply(text);
+      const reply = await requestReply();
       messages.push({ role: 'character', text: reply });
+    } catch (error) {
+      messages.pop(); // el mensaje no llegó: no lo dejamos en el historial
+      failedText = text;
+      lastError = friendlyError(error);
     } finally {
       isTyping = false;
       refresh();
-      document.getElementById('message-input')?.focus();
+      const currentInput = document.getElementById('message-input');
+      if (currentInput) {
+        if (failedText) currentInput.value = failedText; // para reintentar con Enter
+        currentInput.focus();
+      }
     }
   });
 }

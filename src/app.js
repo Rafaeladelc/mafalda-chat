@@ -1,4 +1,4 @@
-import { mountChat } from './chat.js';
+import { mountChat } from './chat-view.js';
 
 // Rutas de la aplicación: ruta -> plantilla que se muestra
 const routes = {

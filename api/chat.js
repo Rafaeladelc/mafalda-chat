@@ -9,5 +9,11 @@ export default function handler(req, res) {
   }
 
   const last = messages[messages.length - 1];
+
+  // INTERRUPTOR DE PRUEBA (se borra en la Parte 5c)
+  if (last.text === 'error') {
+    return res.status(500).json({ error: 'Fallo simulado del servidor.' });
+  }
+
   return res.status(200).json({ reply: `(mock) Me dijiste: "${last.text}"` });
 }
