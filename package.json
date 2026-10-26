@@ -5,5 +5,11 @@
   "type": "module",
   "dependencies": {
     "@google/genai": "^2.31.0"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.5"
+  },
+  "scripts": {
+    "test": "vitest run"
   }
 }
