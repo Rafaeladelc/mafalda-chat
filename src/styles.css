@@ -337,3 +337,15 @@ body {
   color: var(--brand-dark);
   border: 1px solid #f3b6ae;
 }
+
+/* Hora de cada mensaje */
+.message-time {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.message.user .message-time {
+  text-align: right;
+}

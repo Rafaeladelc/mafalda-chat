@@ -2,15 +2,32 @@ import { requestReply, friendlyError } from './chat-api.js';
 
 // Estado del chat: vive FUERA de la vista, así no se pierde al navegar
 const messages = [
-  { role: 'character', text: '¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.' },
+  { role: 'character', text: '¿Otra vez tú? Pregunta lo que quieras, pero ojo: yo también pregunto.', time: Date.now() },
 ];
 let isTyping = false;
 let lastError = null;
 
+function formatTime(timestamp) {
+  return new Date(timestamp).toLocaleTimeString('es-PE', {
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+}
+
 function createMessageElement(message) {
   const li = document.createElement('li');
   li.className = `message ${message.role}`;
-  li.textContent = message.text;
+
+  const text = document.createElement('span');
+  text.className = 'message-text';
+  text.textContent = message.text;
+
+  const time = document.createElement('time');
+  time.className = 'message-time';
+  time.dateTime = new Date(message.time).toISOString();
+  time.textContent = formatTime(message.time);
+
+  li.append(text, time);
   return li;
 }
 
@@ -67,7 +84,7 @@ export function mountChat() {
     const text = input.value.trim();
     if (!text || isTyping) return;
 
-    messages.push({ role: 'user', text });
+    messages.push({ role: 'user', text, time: Date.now() });
     input.value = '';
     lastError = null;
     isTyping = true;
@@ -76,7 +93,7 @@ export function mountChat() {
     let failedText = '';
     try {
       const reply = await requestReply(messages);
-      messages.push({ role: 'character', text: reply });
+      messages.push({ role: 'character', text: reply, time: Date.now() });
     } catch (error) {
       messages.pop(); // el mensaje no llegó: no lo dejamos en el historial
       failedText = text;
