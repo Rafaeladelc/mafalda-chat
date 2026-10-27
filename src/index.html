@@ -26,12 +26,21 @@
   </div>
 
   <!-- Plantillas de las vistas (no se ven hasta que el router las usa) -->
-  <template id="tpl-home">
-    <section class="page">
-      <h2>Hola, soy Mafalda</h2>
-      <p>Una niña curiosa y preguntona, creada por el humorista gráfico argentino Quino. Le preocupa el mundo, le encantan los Beatles y odia la sopa.</p>
-      <p>Pregúntale lo que quieras. Pero ojo: ella también te va a preguntar.</p>
-      <a class="button" href="/chat" data-link>Empezar a chatear</a>
+    <template id="tpl-home">
+    <section class="page home">
+      <img
+        class="home-image"
+        src="/src/img/mafalda.jpg"
+        alt="Mafalda saludando con una flor en la mano, dentro de un marco de madera"
+        width="1024"
+        height="559"
+      >
+      <div class="home-text">
+        <h2>Hola, soy Mafalda</h2>
+        <p>Una niña curiosa y preguntona, creada por el humorista gráfico argentino Quino. Le preocupa el mundo, le encantan los Beatles y odia la sopa.</p>
+        <p>Pregúntale lo que quieras. Pero ojo: ella también te va a preguntar.</p>
+        <a class="button" href="/chat" data-link>Empezar a chatear</a>
+      </div>
     </section>
   </template>
 

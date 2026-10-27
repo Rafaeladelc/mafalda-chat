@@ -349,3 +349,31 @@ body {
 .message.user .message-time {
   text-align: right;
 }
+
+/* Imagen de la pantalla Home (celular: apilada, con altura limitada) */
+.home-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 30vh;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+}
+
+/* Home en dos columnas (tablet y desktop) */
+@media (min-width: 768px) {
+  .home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .home-image {
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    margin-bottom: 0;
+  }
+}
