@@ -17,7 +17,15 @@ function createMessageElement(message) {
 function createTypingElement() {
   const li = document.createElement('li');
   li.className = 'message character typing';
-  li.textContent = 'Mafalda está escribiendo...';
+  for (let i = 0; i < 3; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    li.append(dot);
+  }
+  const label = document.createElement('span');
+  label.className = 'sr-only';
+  label.textContent = 'Mafalda está escribiendo';
+  li.append(label);
   return li;
 }
 

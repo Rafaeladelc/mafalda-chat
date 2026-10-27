@@ -285,9 +285,43 @@ body {
 }
 
 /* Parte 4b: estado "escribiendo" y controles deshabilitados */
+/* Indicador "escribiendo": tres puntos que saltan */
 .message.typing {
-  font-style: italic;
-  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 0.9rem;
+}
+
+.message.typing .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: dot-bounce 1.2s infinite ease-in-out;
+}
+
+.message.typing .dot:nth-child(2) { animation-delay: 0.2s; }
+.message.typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dot-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Quien prefiere menos movimiento ve los puntos quietos */
+@media (prefers-reduced-motion: reduce) {
+  .message.typing .dot { animation: none; opacity: 0.7; }
+}
+
+/* Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .composer input:disabled,
