@@ -1,5 +1,7 @@
 import { mountChat } from './chat-view.js';
 
+import { initTheme } from './theme.js';
+
 // Rutas de la aplicación: ruta -> plantilla que se muestra
 const routes = {
   '/home': { template: 'tpl-home', title: 'Mafalda · Inicio' },
@@ -52,5 +54,7 @@ function start() {
   }
   render(location.pathname);
 }
+
+initTheme();
 
 start();

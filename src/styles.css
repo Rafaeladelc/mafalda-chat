@@ -414,3 +414,59 @@ body {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+/* =====================================================
+   MODO OSCURO
+   ===================================================== */
+
+:root {
+  --accent: #c8102e; /* rojo para textos (títulos) */
+}
+
+:root[data-theme="dark"] {
+  --bg: #17120e;
+  --panel: #221b15;
+  --text: #f3e9dc;
+  --muted: #b8a999;
+  --char-bubble: #3a2f25;
+  --border: #3d3228;
+  --focus: #7aa2ff;
+  --accent: #ff7a8e;
+  color-scheme: dark;
+}
+
+/* Elementos que antes tenían un color fijo y ahora usan las variables */
+.page h2 {
+  color: var(--accent);
+}
+
+.composer input {
+  background: var(--panel);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .message.error {
+  background: #3a1a1d;
+  color: #ffb4bd;
+  border-color: #6b2a31;
+}
+
+/* Botón de cambio de tema (en la cabecera) */
+.theme-toggle {
+  padding: 0.35rem 0.6rem;
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
