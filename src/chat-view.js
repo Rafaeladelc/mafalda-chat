@@ -14,6 +14,28 @@ function formatTime(timestamp) {
   });
 }
 
+function createCopyButton(text) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'copy-button';
+  button.textContent = 'Copiar';
+  button.setAttribute('aria-label', 'Copiar la respuesta de Mafalda');
+
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      button.textContent = 'Copiado ✓';
+    } catch {
+      button.textContent = 'No se pudo copiar';
+    }
+    setTimeout(() => {
+      button.textContent = 'Copiar';
+    }, 1500);
+  });
+
+  return button;
+}
+
 function createMessageElement(message) {
   const li = document.createElement('li');
   li.className = `message ${message.role}`;
@@ -27,7 +49,14 @@ function createMessageElement(message) {
   time.dateTime = new Date(message.time).toISOString();
   time.textContent = formatTime(message.time);
 
-  li.append(text, time);
+  const meta = document.createElement('div');
+  meta.className = 'message-meta';
+  meta.append(time);
+  if (message.role === 'character') {
+    meta.append(createCopyButton(message.text));
+  }
+
+  li.append(text, meta);
   return li;
 }
 

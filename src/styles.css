@@ -377,3 +377,40 @@ body {
     margin-bottom: 0;
   }
 }
+
+/* Fila de hora + botón copiar */
+.message-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.message-meta .message-time {
+  margin-top: 0;
+}
+
+.message.user .message-meta {
+  justify-content: flex-end;
+}
+
+.copy-button {
+  padding: 0.15rem 0.5rem;
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background: var(--panel);
+}
+
+.copy-button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
