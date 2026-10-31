@@ -490,3 +490,10 @@ body {
 .message.character:not(.typing) .message-meta {
   grid-column: 2;
 }
+
+   /* Botón de la pantalla Home, centrado */
+   .home-text .button {
+     display: block;
+     width: fit-content;
+     margin: 1rem auto 0;
+   }
