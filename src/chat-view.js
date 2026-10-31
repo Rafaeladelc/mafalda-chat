@@ -40,6 +40,16 @@ function createMessageElement(message) {
   const li = document.createElement('li');
   li.className = `message ${message.role}`;
 
+  if (message.role === 'character') {
+    const avatar = document.createElement('img');
+    avatar.className = 'avatar';
+    avatar.src = '/src/img/mafalda-avatar.jpg';
+    avatar.alt = '';
+    avatar.width = 32;
+    avatar.height = 32;
+    li.append(avatar);
+  }
+
   const text = document.createElement('span');
   text.className = 'message-text';
   text.textContent = message.text;
