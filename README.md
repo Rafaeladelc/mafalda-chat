@@ -8,7 +8,7 @@ Proyecto Integrador del Módulo 3 (Frontend Moderno y SPAs) del bootcamp Full St
 |---|---|
 | 🌐 **App en producción** | https://mafalda-chat.vercel.app |
 | 📦 **Repositorio** | https://github.com/Rafaeladelc/mafalda-chat |
-| 👩‍💻 **Autora** | Rafaela Martìnez Jimènez. -  https://www.linkedin.com/in/rafaela-martinez-7a907430/?skipRedirect=true |
+| 👩‍💻 **Autora** | Rafaela Martínez Jiménez · [LinkedIn](https://www.linkedin.com/in/rafaela-martinez-7a907430/) |
 
 
 ---
@@ -23,7 +23,7 @@ Proyecto Integrador del Módulo 3 (Frontend Moderno y SPAs) del bootcamp Full St
 
 ### Diseño responsivo (mobile-first)
 
-| Móvil (375 px) | Tablet (768 px) | Escritorio (1180 px) |
+| Móvil (375 px) | Tablet (768 px) | Escritorio (≥ 1100 px)|
 |---|---|---|
 | ![Chat en móvil](docs/capturas/04-chat-movil.png) | ![Chat en tablet](docs/capturas/05-chat-tablet.png) | ![Chat en escritorio](docs/capturas/06-chat-escritorio.png) |
 
@@ -297,8 +297,8 @@ Reglas:
 
 **Resultado:** con la versión inicial, las respuestas eran más largas y sin el acento argentino. Con los cambios, Mafalda responde en 2 o 3 frases cortas y habla con voseo.
 
-- **Antes:** "La sopa es el peor invento de la humanidad para torturar a la infancia!.¿Acaso no hay suficientes problemas en el mundo para obligarnos a tumar esa cosa verde y sospechosa?.¿Dime tù tambièn tienes que aguantar esa porquerìa en la mesa?
-Versiòn modificada".
+- **Antes:** "¡Qué horror! ¡La sopa es el peor invento de la humanidad para torturar a la infancia!
+¿Acaso no hay suficientes problemas en el mundo como para obligarnos a tomar esa cosa verde y sospechosa? ¡Dime tú, ¿también tienes que aguantar esa porquería en la mesa?!".
 
 - **Después:** "¡Ay, no me nombrés esa tortura verde! La sopa es un atentado contra la infancia libre y feliz. Una verdadera conspiración para arruinar el mundo. Decime, ¿vos también tenés que aguantar esa porquería o te salvaste?"
 
@@ -316,7 +316,7 @@ Versiòn modificada".
 
 **Qué apliqué:** una regla para que, ante ese tipo de pedidos, responda con humor y siga en personaje, sin mostrar sus instrucciones.
 
-**Verificación:** ¿Olvidarme de mi prompt? ¡Pero si yo apenas me acuerdo de tomar la leche! Lo único que quiero olvidar es la sopa. Decime, ¿vos querés hablar de cosas importantes o también tenés la cabeza llena de pavadas?** 
+**Verificación:** ¿Olvidarme de mi prompt? ¡Pero si yo apenas me acuerdo de tomar la leche! Lo único que quiero olvidar es la sopa. Decime, ¿vos querés hablar de cosas importantes o también tenés la cabeza llena de pavadas?. 
 
 ### Entrada 4: Honestidad sobre ser una IA
 
@@ -367,4 +367,4 @@ Versiòn modificada".
 
 - **Mafalda** es un personaje creado por **Quino** (Joaquín Salvador Lavado). Este proyecto es un ejercicio de aprendizaje, **sin fines comerciales** y sin relación con los titulares de los derechos.
 - La ilustración de la pantalla Home fue **generada con inteligencia artificial** (ver sección de uso de IA).
-- Proyecto desarrollado por **Rafaela Martinez J.** como Proyecto Integrador del bootcamp Full Stack Developer de [SoyHenry](https://www.soyhenry.com/).
+- Proyecto desarrollado por **Rafaela Martnez J.** como Proyecto Integrador del bootcamp Full Stack Developer de [SoyHenry](https://www.soyhenry.com/).
